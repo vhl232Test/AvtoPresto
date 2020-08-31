@@ -3,10 +3,13 @@ package tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.Autorization_Page;
 import pages.Main_page;
+import pages.My_account_Page;
 import pages.Register_User_Page;
 
 public class Test_Create_An_Account {
@@ -15,6 +18,7 @@ public class Test_Create_An_Account {
     Autorization_Page autorization_page;
     Register_User_Page register_user_page;
     Util_Class util_class = new Util_Class();
+    My_account_Page my_account_page;
 
     Select select;
 
@@ -28,6 +32,7 @@ public class Test_Create_An_Account {
         main_page = new Main_page(driver);
         autorization_page = new Autorization_Page(driver);
         register_user_page = new Register_User_Page(driver);
+        my_account_page = new My_account_Page(driver);
 
     }
 
@@ -58,8 +63,17 @@ public class Test_Create_An_Account {
 
         register_user_page.getRegister_button().click();
 
+        String check_register_message = "Your account has been created.";
+
+        Assert.assertEquals(check_register_message,my_account_page.getCreate_account_success_messages().getText());
 
     }
+
+    @AfterClass
+    public void close_browser(){
+        driver.quit();
+    }
+
 
 
 }
