@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.Autorization_Page;
+import pages.Authentication_Page;
 import pages.Main_page;
 import pages.My_account_Page;
 import pages.Register_User_Page;
@@ -15,7 +15,7 @@ import pages.Register_User_Page;
 public class Test_Create_An_Account {
     WebDriver driver;
     Main_page main_page;
-    Autorization_Page autorization_page;
+    Authentication_Page authentication_page;
     Register_User_Page register_user_page;
     Util_Class util_class = new Util_Class();
     My_account_Page my_account_page;
@@ -30,7 +30,7 @@ public class Test_Create_An_Account {
         driver.manage().window().maximize();
 
         main_page = new Main_page(driver);
-        autorization_page = new Autorization_Page(driver);
+        authentication_page = new Authentication_Page(driver);
         register_user_page = new Register_User_Page(driver);
         my_account_page = new My_account_Page(driver);
 
@@ -39,8 +39,8 @@ public class Test_Create_An_Account {
     @Test
     public void register_user() throws InterruptedException {
         main_page.getSign_in_button().click();
-        autorization_page.getEmail_create_user_field().sendKeys(util_class.getPost_for_user());
-        autorization_page.getCreate_account_button().click();
+        authentication_page.getEmail_create_user_field().sendKeys(util_class.getPost_for_user());
+        authentication_page.getCreate_account_button().click();
 
 
         Thread.sleep(3000);

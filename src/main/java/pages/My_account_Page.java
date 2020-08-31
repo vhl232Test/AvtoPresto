@@ -16,6 +16,12 @@ public class My_account_Page {
 
     @FindBy(xpath = "//p[@class='alert alert-success']")
     WebElement create_account_success_messages;
+    @FindBy(xpath = "//h1[text() ='My account']/parent::div/p")
+    WebElement welcome_account_message;
+
+    public WebElement getWelcome_account_message() {
+        return welcome_account_message;
+    }
 
     public WebElement getCreate_account_success_messages() {
         return create_account_success_messages;
